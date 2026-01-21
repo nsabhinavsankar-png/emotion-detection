@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+
+# Training logs & outputs
+logs/
+results/
+
+# HuggingFace cache (optional)
+.cache/
+.huggingface/
+
+# OS files
+.DS_Store
+
+emotion_model/
+venv/
+__pycache__/
+*.pyc

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emotion Detection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #2a2a2a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #e5e7eb;
+        }
+
+        .container {
+            background: #000000;
+            padding: 2.5rem;
+            border-radius: 18px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            width: 90%;
+            max-width: 480px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #f9fafb;
+        }
+
+        .subtitle {
+            color: #9ca3af;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 1rem;
+            border-radius: 14px;
+            resize: none;
+            font-family: inherit;
+            font-size: 1rem;
+            background-color: #000000;
+            border: 1px solid #333333;
+            color: #e5e7eb;
+            box-sizing: border-box;
+            margin-bottom: 1.2rem;
+        }
+
+        textarea::placeholder {
+            color: #6b7280;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #4ade80;
+        }
+
+        button {
+            background: linear-gradient(135deg, #86efac, #22c55e);
+            color: #064e3b;
+            border: none;
+            padding: 1rem;
+            font-size: 1rem;
+            border-radius: 14px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.35);
+        }
+
+        .result {
+            margin-top: 2rem;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #022c22, #064e3b);
+            border-radius: 14px;
+            color: #a7f3d0;
+            font-size: 1.1rem;
+            animation: fadeIn 0.4s ease;
+        }
+
+        /* EMOJI ANIMATION */
+        .emoji {
+            font-size: 2.4rem;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+            display: inline-block;
+            animation: popBounce 0.6s ease-out;
+        }
+
+        @keyframes popBounce {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.25);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Emotion Detection</h1>
+    <p class="subtitle">Analyze the emotional tone of your text instantly.</p>
+
+    <form method="POST">
+        <textarea name="text" placeholder="Type your sentence here..." required></textarea>
+        <button type="submit">Analyze Emotion</button>
+    </form>
+
+    {% if emotion %}
+        <div class="result">
+            <p>
+                <strong>Predicted Emotion:</strong>
+                {{ emotion }}
+                <span class="emoji">{{ emoji }}</span>
+            </p>
+            <p>
+                <strong>Confidence:</strong> {{ confidence }}%
+            </p>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
