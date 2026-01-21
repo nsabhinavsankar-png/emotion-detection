@@ -36,3 +36,7 @@ source venv/bin/activate
 
 # run app
 python app.py
+
+## Model Files
+Trained model files are excluded due to GitHub size limits.
+Run `python train_model.py` to generate them locally.
